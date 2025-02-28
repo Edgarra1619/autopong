@@ -1,4 +1,11 @@
-CCFLAGS = -Wall -Wextra -g -lncurses
+CCFLAGS = -Wall -Wextra -g
+OBJECTS = ./bin/game.o ./bin/main.o ./bin/render.o
 
-all:
-	clang $(CCFLAGS) ./src/game.c ./src/main.c
+
+all: autopongo
+
+autopongo: $(OBJECTS)
+	clang $(CCFLAGS) $(OBJECTS) -lncurses -o autopongo
+
+$(OBJECTS) : ./bin/%.o : ./src/%.c
+	clang $(CCFLAGS) ./src/$*.c -c -o $@

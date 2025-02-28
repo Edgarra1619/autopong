@@ -5,16 +5,20 @@
 int	main()
 {
 	t_game *game;
+	WINDOW *wind;
 	game = start_game();
 	if(!game)
 		return(0);
-	if(!initscr())
+	wind = initscr();
+	if(!wind)
 		goto clean;
 	cbreak();
+	curs_set(0);
 	noecho();
-	wclear(stdscr);
-	render_game(0);
+	render_game(game);
+	getch();
 	endwin();
+	delwin(wind);
 clean:
 	free(game);
 }

@@ -1,6 +1,9 @@
 #ifndef FT_HEADER_H
 # define FT_HEADER_H
 
+# define MAX_X 16000
+# define MAX_Y MAX_X * LINES / COLS
+
 typedef struct s_game
 {
 	int	paddle_position[2];
