@@ -8,6 +8,7 @@ typedef struct s_game
 	int	ball_vel[2];
 } t_game;
 
+t_game	*start_game(void);
 void	render_game(t_game* game);
 
 #endif
