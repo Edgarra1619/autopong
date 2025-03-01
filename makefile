@@ -1,4 +1,4 @@
-CCFLAGS = -Wall -Wextra -g
+CCFLAGS = -Wall -Wextra -O
 OBJECTS = ./bin/game.o ./bin/main.o ./bin/render.o
 
 
@@ -9,3 +9,8 @@ autopongo: $(OBJECTS)
 
 $(OBJECTS) : ./bin/%.o : ./src/%.c
 	clang $(CCFLAGS) ./src/$*.c -c -o $@
+
+clean:
+	rm $(OBJECTS) -f
+
+re: clean autopongo
