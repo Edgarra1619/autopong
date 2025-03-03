@@ -1,5 +1,5 @@
-COMPILER = gcc
-CCFLAGS = -Wall -Wextra -O
+COMPILER = clang
+CCFLAGS = -Wall -Wextra -O -std=gnu99 --pedantic
 OBJECTS = ./bin/game.o ./bin/main.o ./bin/render.o
 
 
