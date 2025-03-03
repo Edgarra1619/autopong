@@ -1,3 +1,4 @@
+COMPILER = gcc
 CCFLAGS = -Wall -Wextra -O
 OBJECTS = ./bin/game.o ./bin/main.o ./bin/render.o
 
@@ -5,12 +6,13 @@ OBJECTS = ./bin/game.o ./bin/main.o ./bin/render.o
 all: autopongo
 
 autopongo: $(OBJECTS)
-	clang $(CCFLAGS) $(OBJECTS) -lncurses -o autopongo
+	$(COMPILER) $(CCFLAGS) $(OBJECTS) -lncurses -o autopongo
 
 $(OBJECTS) : ./bin/%.o : ./src/%.c
-	clang $(CCFLAGS) ./src/$*.c -c -o $@
+	mkdir -p bin
+	$(COMPILER) $(CCFLAGS) ./src/$*.c -c -o $@
 
 clean:
-	rm $(OBJECTS) -f
+	rm $(OBJECTS) autopongo -f
 
 re: clean autopongo
